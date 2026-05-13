@@ -39,40 +39,37 @@ const PreviewCanvas: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      {/* Preview Title */}
       <div className="text-center">
-        <h3 className="text-white/90 font-semibold text-lg">Live Preview</h3>
-        <p className="text-white/40 text-sm">What you see is what you get</p>
+        <h3 className="text-gray-800 font-semibold text-lg">Live Preview</h3>
+        <p className="text-gray-400 text-sm">What you see is what you get</p>
       </div>
 
-      {/* Zoom Controls */}
-      <div className="flex items-center gap-2 glass px-3 py-2 rounded-full">
+      <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-full">
         <button
           onClick={handleZoomOut}
-          className="p-1 rounded-full hover:bg-white/10 transition-colors"
+          className="p-1 rounded-full hover:bg-gray-200 transition-colors"
         >
-          <ZoomOut className="w-4 h-4 text-white/70" />
+          <ZoomOut className="w-4 h-4 text-gray-600" />
         </button>
-        <span className="text-white/70 text-sm min-w-[60px] text-center">
+        <span className="text-gray-600 text-sm min-w-[60px] text-center">
           {Math.round(scale * 100)}%
         </span>
         <button
           onClick={handleZoomIn}
-          className="p-1 rounded-full hover:bg-white/10 transition-colors"
+          className="p-1 rounded-full hover:bg-gray-200 transition-colors"
         >
-          <ZoomIn className="w-4 h-4 text-white/70" />
+          <ZoomIn className="w-4 h-4 text-gray-600" />
         </button>
         <button
           onClick={handleReset}
-          className="p-1 rounded-full hover:bg-white/10 transition-colors"
+          className="p-1 rounded-full hover:bg-gray-200 transition-colors"
         >
-          <RefreshCw className="w-4 h-4 text-white/70" />
+          <RefreshCw className="w-4 h-4 text-gray-600" />
         </button>
       </div>
 
-      {/* Card Preview with Zoom */}
       <div
-        className="overflow-auto rounded-2xl p-4 glass"
+        className="overflow-auto rounded-xl border border-gray-200 p-4 bg-gray-50"
         style={{ maxHeight: '60vh', maxWidth: '100%' }}
       >
         <div
@@ -86,11 +83,10 @@ const PreviewCanvas: React.FC = () => {
         </div>
       </div>
 
-      {/* Download Button */}
       <button
         onClick={handleDownload}
         disabled={isGenerating}
-        className="w-full py-3 rounded-xl bg-gradient-to-r from-brand-primary to-brand-light text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-3 rounded-lg bg-[#002966] text-white font-medium flex items-center justify-center gap-2 hover:bg-[#001a4d] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isGenerating ? (
           <>

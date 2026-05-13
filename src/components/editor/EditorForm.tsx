@@ -17,8 +17,8 @@ const EditorForm: React.FC = () => {
         <ContentTextarea />
       </div>
       
-      <div className="border-t border-white/10 pt-6">
-        <h3 className="text-white/80 text-sm font-medium mb-4">Customization</h3>
+      <div className="border-t border-gray-200 pt-6">
+        <h3 className="text-gray-700 text-sm font-medium mb-4">Customization</h3>
         <div className="grid sm:grid-cols-2 gap-4">
           <ProfileImageUpload />
           <BackgroundImageUpload />
@@ -27,7 +27,7 @@ const EditorForm: React.FC = () => {
         </div>
       </div>
       
-      <div className="border-t border-white/10 pt-6">
+      <div className="border-t border-gray-200 pt-6">
         <QRCodeSettings />
       </div>
     </div>

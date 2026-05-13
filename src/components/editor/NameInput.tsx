@@ -7,7 +7,7 @@ const NameInput: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <label className="text-white/80 text-sm font-medium flex items-center gap-2">
+      <label className="text-gray-700 text-sm font-medium flex items-center gap-2">
         <User className="w-4 h-4" />
         Display Name
       </label>
@@ -16,7 +16,7 @@ const NameInput: React.FC = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Your display name"
-        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-white/30 focus:bg-white/10 transition-all"
+        className="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:border-[#002966] focus:ring-1 focus:ring-[#002966] transition-all"
       />
     </div>
   );

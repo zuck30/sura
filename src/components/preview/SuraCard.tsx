@@ -43,7 +43,7 @@ const SuraCard: React.FC<SuraCardProps> = ({ onRender }) => {
   return (
     <div
       ref={cardRef}
-      className="relative w-[500px] h-[500px] overflow-hidden rounded-3xl shadow-2xl"
+      className="relative w-[375px] h-[667px] overflow-hidden rounded-3xl shadow-2xl"
       style={{
         fontFamily: "'Inter', system-ui, sans-serif",
       }}
@@ -65,11 +65,8 @@ const SuraCard: React.FC<SuraCardProps> = ({ onRender }) => {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800" />
       )}
 
-      {/* Glassmorphic overlay on card itself */}
-      <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]" />
-
       {/* Content Container */}
-      <div className="relative z-10 h-full flex flex-col p-6">
+      <div className="relative z-10 h-full flex flex-col p-5">
         {/* Top Section - Profile */}
         <div className="flex items-center gap-3">
           {profileImage ? (
@@ -87,36 +84,36 @@ const SuraCard: React.FC<SuraCardProps> = ({ onRender }) => {
           )}
           
           <div>
-            <h2 className="text-white font-bold text-lg" style={{ color: themeColor }}>
+            <h2 className="text-white font-bold text-base" style={{ color: themeColor }}>
               {name}
             </h2>
-            <p className="text-white/60 text-sm">@{username}</p>
+            <p className="text-white/60 text-xs">@{username}</p>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="my-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="my-3 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Content Section */}
+        {/* Content Section - Scrollable for long text */}
         <div className="flex-1 overflow-y-auto custom-scrollbar">
-          <p className="text-white leading-relaxed whitespace-pre-wrap text-base">
+          <p className="text-white leading-relaxed whitespace-pre-wrap text-sm">
             {content}
           </p>
         </div>
 
         {/* Divider */}
-        <div className="my-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="my-3 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
         {/* Bottom Section - Date/Time & QR */}
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-white/50 text-xs">{formattedDate}</p>
-            <p className="text-white/40 text-[10px]">{formattedTime}</p>
+            <p className="text-white/50 text-[10px]">{formattedDate}</p>
+            <p className="text-white/40 text-[8px]">{formattedTime}</p>
           </div>
           
           {qrEnabled && qrUrl && (
             <div className="bg-white p-1 rounded-lg">
-              <QRCode value={qrUrl} size={40} />
+              <QRCode value={qrUrl} size={35} />
             </div>
           )}
         </div>
