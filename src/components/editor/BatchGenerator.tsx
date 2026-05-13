@@ -5,7 +5,6 @@ import JSZip from 'jszip';
 
 const BatchGenerator: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
-
   const handleCSVUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -14,7 +13,7 @@ const BatchGenerator: React.FC = () => {
         header: true,
         complete: async (results) => {
           console.log('CSV parsed:', results.data);
-          // Here you would generate multiple cards
+          // Here would generate multiple cards
           // For now, show alert
           alert(`Found ${results.data.length} rows. Batch generation coming soon!`);
           setIsProcessing(false);
