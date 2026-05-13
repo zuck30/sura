@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input, textarea, button {
+    @apply focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-0;
+  }
+}
