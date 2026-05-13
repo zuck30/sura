@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="py-6 text-center text-gray-400 text-sm border-t border-gray-100 mt-8">
-      <p className="mt-1">© {currentYear} Sura.  Shape your words into art</p>
+      <p className="mt-1">© {currentYear} Surabox.  Shape your words into art</p>
     </footer>
   );
 };
