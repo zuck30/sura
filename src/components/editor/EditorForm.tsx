@@ -8,8 +8,11 @@ import ColorPicker from './ColorPicker';
 import EmojiPickerButton from './EmojiPickerButton';
 import QRCodeSettings from './QRCodeSettings';
 import AspectRatioSelector from './AspectRatioSelector';
+import LayoutSelector from './LayoutSelector';
 import FontSelector from './FontSelector';
 import TextStyleControls from './TextStyleControls';
+import GradientPicker from './GradientPicker';
+import DesignPresets from './DesignPresets';
 
 const EditorForm: React.FC = () => {
   return (
@@ -23,6 +26,12 @@ const EditorForm: React.FC = () => {
       <div className="border-t border-gray-200 pt-6">
         <h3 className="text-gray-700 text-sm font-medium mb-4">Customization</h3>
         <div className="mb-6">
+          <DesignPresets />
+        </div>
+        <div className="mb-6">
+          <LayoutSelector />
+        </div>
+        <div className="mb-6">
           <AspectRatioSelector />
         </div>
         <div className="mb-6 border-t border-gray-100 pt-6">
@@ -30,6 +39,9 @@ const EditorForm: React.FC = () => {
         </div>
         <div className="mb-6 border-t border-gray-100 pt-6">
           <TextStyleControls />
+        </div>
+        <div className="mb-6 border-t border-gray-100 pt-6">
+          <GradientPicker />
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
           <ProfileImageUpload />
