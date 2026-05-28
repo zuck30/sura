@@ -4,21 +4,40 @@ import { useCardStore } from '../../stores/cardStore';
 
 interface SuraCardProps {
   onRender?: (ref: HTMLDivElement | null) => void;
+  data?: {
+    name?: string;
+    username?: string;
+    content?: string;
+    profileImage?: string | null;
+    backgroundImage?: string | null;
+    backgroundOpacity?: number;
+    themeColor?: string;
+    qrEnabled?: boolean;
+    qrUrl?: string;
+    aspectRatio?: 'square' | 'portrait' | 'landscape' | 'story';
+    fontFamily?: string;
+    fontSize?: number;
+    textAlign?: 'left' | 'center' | 'right';
+  };
 }
 
-const SuraCard: React.FC<SuraCardProps> = ({ onRender }) => {
+const SuraCard: React.FC<SuraCardProps> = ({ onRender, data }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const {
-    name,
-    username,
-    content,
-    profileImage,
-    backgroundImage,
-    backgroundOpacity,
-    themeColor,
-    qrEnabled,
-    qrUrl,
-  } = useCardStore();
+  const store = useCardStore();
+
+  const name = data?.name ?? store.name;
+  const username = data?.username ?? store.username;
+  const content = data?.content ?? store.content;
+  const profileImage = data?.profileImage ?? store.profileImage;
+  const backgroundImage = data?.backgroundImage ?? store.backgroundImage;
+  const backgroundOpacity = data?.backgroundOpacity ?? store.backgroundOpacity;
+  const themeColor = data?.themeColor ?? store.themeColor;
+  const qrEnabled = data?.qrEnabled ?? store.qrEnabled;
+  const qrUrl = data?.qrUrl ?? store.qrUrl;
+  const aspectRatio = data?.aspectRatio ?? store.aspectRatio;
+  const fontFamily = data?.fontFamily ?? store.fontFamily;
+  const fontSize = data?.fontSize ?? store.fontSize;
+  const textAlign = data?.textAlign ?? store.textAlign;
 
   const [currentDateTime] = useState(new Date());
 
@@ -40,12 +59,22 @@ const SuraCard: React.FC<SuraCardProps> = ({ onRender }) => {
     hour12: true,
   });
 
+  const getDimensions = () => {
+    switch (aspectRatio) {
+      case 'square': return 'w-[500px] h-[500px]';
+      case 'landscape': return 'w-[600px] h-[400px]';
+      case 'story': return 'w-[360px] h-[640px]';
+      case 'portrait':
+      default: return 'w-[375px] h-[667px]';
+    }
+  };
+
   return (
     <div
       ref={cardRef}
-      className="relative w-[375px] h-[667px] overflow-hidden rounded-3xl shadow-2xl"
+      className={`relative ${getDimensions()} overflow-hidden rounded-3xl shadow-2xl transition-all duration-300`}
       style={{
-        fontFamily: "'Inter', system-ui, sans-serif",
+        fontFamily: fontFamily,
       }}
     >
       {/* Background Layer */}
@@ -95,8 +124,14 @@ const SuraCard: React.FC<SuraCardProps> = ({ onRender }) => {
         <div className="my-3 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
         {/* Content Section - Scrollable for long text */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar">
-          <p className="text-white leading-relaxed whitespace-pre-wrap text-sm">
+        <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col justify-center">
+          <p
+            className="text-white leading-relaxed whitespace-pre-wrap"
+            style={{
+              fontSize: `${fontSize}px`,
+              textAlign: textAlign,
+            }}
+          >
             {content}
           </p>
         </div>
